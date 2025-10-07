@@ -19,6 +19,7 @@ This project provides a central platform for students, faculty, alumni, and the 
 ## 🛠️ Tech Stack
 
 - [Next.js 13+](https://nextjs.org/) – React framework
+- [Nest.js](https://nestjs.com/) -  backend
 - [Tailwind CSS](https://tailwindcss.com/) – utility-first CSS
 - [shadcn/ui](https://ui.shadcn.com/) – styled UI components
 - [Lucide Icons](https://lucide.dev/) – modern SVG icons
@@ -32,10 +33,10 @@ Clone the project and install dependencies:
 
 ```bash
 # clone repo
-git clone https://github.com/your-username/mnhs-website.git
+git clone https://github.com/your-username/mnhs.git
 
 # move into folder
-cd mnhs-website
+cd mnhs
 
 # install dependencies
 npm install
