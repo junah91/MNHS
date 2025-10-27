@@ -1,6 +1,4 @@
 # MNHS
-<<<<<<< HEAD
-=======
 # Mantalongon National High School Website
 
 A modern school portal built with **Next.js**, **Tailwind CSS**, and **shadcn/ui**.  
@@ -45,4 +43,3 @@ npm install
 
 # run development server
 npm run dev
->>>>>>> ce9d31c3ef2cc8ce31782880677ab86b4818603d
