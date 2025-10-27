@@ -14,7 +14,7 @@ import {
 const NAV_ITEMS = [
   { href: "/Home", label: "Home" },
   { href: "/About", label: "About" },
-  { href: "/Programs", label: "Programs" },
+  { href: "/#Programs", label: "Programs" },
   { href: "/Contact", label: "Contact" },
 ];
 
@@ -49,7 +49,7 @@ export default function Navbar() {
         {/* Login Button (right side) */}
         <Button
           className="bg-green-600 hover:bg-green-700 text-white px-4 py-2"
-          onClick={() => (window.location.href = "/login")}
+          onClick={() => (window.location.href = "/Auth")}
         >
           Login
         </Button>

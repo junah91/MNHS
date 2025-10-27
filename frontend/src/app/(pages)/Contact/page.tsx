@@ -34,17 +34,29 @@ export default function ContactPage() {
               <label className="block text-sm font-medium text-gray-700">
                 Email <span className="text-red-500">*</span>
               </label>
-              <Input type="email" placeholder="your@email.com" required className="mt-2" />
+              <Input
+                type="email"
+                placeholder="your@email.com"
+                required
+                className="mt-2"
+              />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Message <span className="text-red-500">*</span>
               </label>
-              <Textarea placeholder="Type your message..." required className="mt-2 min-h-[120px]" />
+              <Textarea
+                placeholder="Type your message..."
+                required
+                className="mt-2 min-h-[120px]"
+              />
             </div>
 
-            <Button type="submit" className="bg-green-700 hover:bg-green-800 text-white px-6">
+            <Button
+              type="submit"
+              className="bg-green-700 hover:bg-green-800 text-white px-6"
+            >
               Submit
             </Button>
           </form>
@@ -52,17 +64,23 @@ export default function ContactPage() {
           {/* Right Info */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-lg font-semibold text-green-700">EMAIL ADDRESS</h2>
+              <h2 className="text-lg font-semibold text-green-700">
+                EMAIL ADDRESS
+              </h2>
               <p className="text-gray-700">mantalongonnhs.303000@gmail.com</p>
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-green-700">CELLPHONE NUMBER</h2>
+              <h2 className="text-lg font-semibold text-green-700">
+                CELLPHONE NUMBER
+              </h2>
               <p className="text-gray-700">+63 916 785 9669</p>
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-green-700">PHYSICAL ADDRESS</h2>
+              <h2 className="text-lg font-semibold text-green-700">
+                PHYSICAL ADDRESS
+              </h2>
               <p className="text-gray-700">
                 Mantalongon Proper, Mantalongon, Dalaguete, Cebu
               </p>

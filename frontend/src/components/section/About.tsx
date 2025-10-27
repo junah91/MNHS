@@ -11,10 +11,14 @@ export default function AboutSection() {
           About MNHS
         </h2>
         <p className="text-gray-700 text-lg mb-4 leading-relaxed">
-          Mantalongon National High School has been providing quality education for our community’s youth since 1966. Our programs focus on academic excellence, values formation, and leadership development.
+          Mantalongon National High School has been providing quality education
+          for our community’s youth since 1966. Our programs focus on academic
+          excellence, values formation, and leadership development.
         </p>
         <p className="text-gray-700 text-lg leading-relaxed">
-          With dedicated teachers, supportive staff, and an engaged community, we aim to nurture responsible, innovative, and globally-competitive students.
+          With dedicated teachers, supportive staff, and an engaged community,
+          we aim to nurture responsible, innovative, and globally-competitive
+          students.
         </p>
       </div>
       <div className="md:w-1/2">

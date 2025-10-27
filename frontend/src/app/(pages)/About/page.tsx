@@ -21,7 +21,9 @@ export default function AboutPage() {
 
       {/* History & Growth */}
       <section>
-        <h2 className="text-2xl font-semibold text-green-600 mb-4">History & Growth</h2>
+        <h2 className="text-2xl font-semibold text-green-600 mb-4">
+          History & Growth
+        </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           MNHS celebrated its first graduation in 1993. Through the years, it
           expanded from its humble beginnings to become the Mantalongon NHS –
@@ -41,7 +43,9 @@ export default function AboutPage() {
 
       {/* Administrators */}
       <section>
-        <h2 className="text-2xl font-semibold text-green-600 mb-4">School Administrators</h2>
+        <h2 className="text-2xl font-semibold text-green-600 mb-4">
+          School Administrators
+        </h2>
         <ul className="list-disc pl-6 text-gray-700 space-y-2">
           <li>Mr. Luis C. Carin (1988 – 2005)</li>
           <li>Mr. Ramon C. Cortes (2006 – 2012)</li>
@@ -52,12 +56,15 @@ export default function AboutPage() {
 
       {/* Present Status */}
       <section>
-        <h2 className="text-2xl font-semibold text-green-600 mb-4">Present Status</h2>
+        <h2 className="text-2xl font-semibold text-green-600 mb-4">
+          Present Status
+        </h2>
         <p className="text-gray-700 leading-relaxed">
           At present, Mantalongon National High School serves around{" "}
           <strong>2,300 learners</strong> from Junior and Senior High School,
-          supported by <strong>65 dedicated teachers</strong>. The school is part
-          of the Division of Cebu Province, under the District of Dalaguete I.
+          supported by <strong>65 dedicated teachers</strong>. The school is
+          part of the Division of Cebu Province, under the District of Dalaguete
+          I.
         </p>
       </section>
 
@@ -69,7 +76,9 @@ export default function AboutPage() {
 
         <div className="space-y-8">
           <div>
-            <h3 className="text-xl font-semibold text-green-600 mb-2">Vision</h3>
+            <h3 className="text-xl font-semibold text-green-600 mb-2">
+              Vision
+            </h3>
             <p className="text-gray-700 leading-relaxed italic">
               We dream of Filipinos who passionately love their country and
               whose values and competencies enable them to realize their full
@@ -80,7 +89,9 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-green-600 mb-2">Mission</h3>
+            <h3 className="text-xl font-semibold text-green-600 mb-2">
+              Mission
+            </h3>
             <p className="text-gray-700 leading-relaxed">
               To protect and promote the right of every Filipino to quality,
               equitable, culture-based, and complete basic education where:
@@ -106,7 +117,9 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-green-600 mb-2">Core Values</h3>
+            <h3 className="text-xl font-semibold text-green-600 mb-2">
+              Core Values
+            </h3>
             <ul className="list-disc pl-6 text-gray-700 space-y-1">
               <li>Maka-Diyos</li>
               <li>Maka-tao</li>
@@ -116,7 +129,9 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-green-600 mb-2">Mandate</h3>
+            <h3 className="text-xl font-semibold text-green-600 mb-2">
+              Mandate
+            </h3>
             <p className="text-gray-700 leading-relaxed">
               The Department of Education formulates, implements, and
               coordinates policies, plans, programs, and projects in the areas

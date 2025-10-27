@@ -1,8 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import mongoose from 'mongoose';
 
 @Injectable()
-export class AppService {
+export class AppService implements OnModuleInit {
+  async onModuleInit() {
+    try {
+      await mongoose.connect(process.env.DATABASE_URL as string);
+      console.log('✅ MongoDB Connected Successfully!');
+    } catch (err) {
+      console.error('❌ MongoDB Connection Failed:', err);
+    }
+  }
+
   getHello(): string {
-    return 'Hello World!';
+    return 'MongoDB connection test!';
   }
 }

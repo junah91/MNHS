@@ -8,11 +8,9 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30"></div>
       <div className="relative z-10 px-6">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-xl">
-          Mantalongon National High School
-        </h1>
         <p className="text-lg md:text-2xl text-gray-100 max-w-3xl mx-auto mb-8 drop-shadow-lg">
-          Inspiring excellence in academics, leadership, and community for generations of learners.
+          Inspiring excellence in academics, leadership, and community for
+          generations of learners.
         </p>
         <a
           href="#about"

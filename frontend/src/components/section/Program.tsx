@@ -17,10 +17,7 @@ export default function ProgramsSection() {
   ];
 
   return (
-    <section
-      id="programs"
-      className="py-24 px-6 md:px-20 bg-green-50"
-    >
+    <section id="programs" className="py-24 px-6 md:px-20 bg-green-50">
       <h3 className="text-3xl md:text-4xl font-bold text-green-700 mb-12 text-center">
         Our Programs
       </h3>
