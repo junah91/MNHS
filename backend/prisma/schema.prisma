@@ -1,144 +1,161 @@
-      // This is your Prisma schema file,
-      // learn more about it in the docs: https://pris.ly/d/prisma-schema
+// ===========================
+// Prisma Schema for MNHS System
+// ===========================
 
-      // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-      // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider = "prisma-client-js"
+}
 
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
 
-      // schema.prisma
-      generator client {
-        provider = "prisma-client-js"
-      }
+// ===========================
+// ENUMS
+// ===========================
 
-      datasource db {
-        provider = "mongodb"
-        url      = env("DATABASE_URL")
-      }
+enum Role {
+  STUDENT
+  TEACHER
+  ALUMNI
+  ADMIN
+}
 
-      // Enums
-      enum Role {
-        STUDENT
-        TEACHER
-        ALUMNI
-        ADMIN
-      }
+enum AccountStatus {
+  ACTIVE
+  DEACTIVATED
+  SUSPENDED
+}
 
-      enum AccountStatus {
-        ACTIVE
-        DEACTIVATED
-        SUSPENDED
-      }
+enum StudentStatus {
+  ENROLLED
+  GRADUATED
+  TRANSFERRED
+  DROPPED_OUT
+}
 
-      enum StudentStatus {
-        ENROLLED
-        GRADUATED
-        TRANSFERRED
-        DROPPED_OUT
-      }
+enum TeacherStatus {
+  ACTIVE
+  RETIRED
+  LEFT
+}
 
-      enum TeacherStatus {
-        ACTIVE
-        RETIRED
-        LEFT
-      }
+// ===========================
+// MODELS
+// ===========================
 
-      // Users table: all users share this
-      model User {
-        id            String        @id @map("_id") @default(auto()) @db.ObjectId
-        firstName     String
-        lastName      String
-        email         String        @unique
-        password      String
-        role          Role
-        accountStatus AccountStatus @default(ACTIVE)
-        phoneNumber   String?
-        address       String?
-        dateOfBirth   DateTime?
-        createdAt     DateTime      @default(now())
-        updatedAt     DateTime      @updatedAt
+// Universal user model
+model User {
+  id            String        @id @map("_id") @default(auto()) @db.ObjectId
+  firstName     String
+  lastName      String
+  email         String        @unique
+  password      String
+  role          Role
+  accountStatus AccountStatus @default(ACTIVE)
+  phoneNumber   String?
+  address       String?
+  dateOfBirth   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 
-        student       Student?
-        teacher       Teacher?
-        alumni        Alumni?
-      }
+  // Relations
+  student       Student?
+  teacher       Teacher?
+  alumni        Alumni?
+}
 
-      // Students
-      model Student {
-        id             String        @id @map("_id") @default(auto()) @db.ObjectId
-        userId         String        @unique
-        schoolId       String        @unique
-        gradeLevel     Int
-        section        String
-        enrollmentDate DateTime
-        schoolStatus   StudentStatus @default(ENROLLED)
-        previousSchool String?       // if transferred from another school
+// ===========================
+// STUDENT MODEL
+// ===========================
+model Student {
+  id             String        @id @map("_id") @default(auto()) @db.ObjectId
+  userId         String        @unique
+  schoolId       String        @unique
+  gradeLevel     Int
+  section        String
+  enrollmentDate DateTime
+  schoolStatus   StudentStatus @default(ENROLLED)
+  previousSchool String?
 
-        user           User          @relation(fields: [userId], references: [id])
-        grades         Grade[]
-        alumni         Alumni?
-      }
+  // Relations
+  user           User          @relation(fields: [userId], references: [id])
+  grades         Grade[]
+  alumni         Alumni?       // automatically linked when graduated
+}
 
-      // Teachers
-      model Teacher {
-        id               String        @id @map("_id") @default(auto()) @db.ObjectId
-        userId           String        @unique
-        employeeId       String        @unique
-        hireDate         DateTime
-        employmentStatus TeacherStatus @default(ACTIVE)
+// ===========================
+// TEACHER MODEL
+// ===========================
+model Teacher {
+  id               String        @id @map("_id") @default(auto()) @db.ObjectId
+  userId           String        @unique
+  employeeId       String        @unique
+  hireDate         DateTime
+  employmentStatus TeacherStatus @default(ACTIVE)
 
-        user             User          @relation(fields: [userId], references: [id])
-        subjects         Subject[]
-        schedules        Schedule[]
-      }
+  user             User          @relation(fields: [userId], references: [id])
+  subjects         Subject[]
+  schedules        Schedule[]
+}
 
-      // Alumni (linked to student)
-      model Alumni {
-        id             String    @id @map("_id") @default(auto()) @db.ObjectId
-        userId         String    @unique
-        studentId      String
-        graduationYear Int
-        currentStatus  String?
+// ===========================
+// ALUMNI MODEL
+// ===========================
+model Alumni {
+  id             String    @id @map("_id") @default(auto()) @db.ObjectId
+  userId         String    @unique
+  studentId      String    @unique
+  graduationYear Int
+  currentStatus  String?
 
-        user           User      @relation(fields: [userId], references: [id])
-        student        Student   @relation(fields: [studentId], references: [id])
-      }
+  user           User      @relation(fields: [userId], references: [id])
+  student        Student   @relation(fields: [studentId], references: [id])
+}
 
-      // Subjects
-      model Subject {
-        id          String    @id @map("_id") @default(auto()) @db.ObjectId
-        name        String
-        code        String
-        gradeLevel  Int
-        teacherId   String
+// ===========================
+// SUBJECT MODEL
+// ===========================
+model Subject {
+  id          String    @id @map("_id") @default(auto()) @db.ObjectId
+  name        String
+  code        String
+  gradeLevel  Int
+  teacherId   String
 
-        teacher     Teacher   @relation(fields: [teacherId], references: [id])
-        grades      Grade[]
-        schedules   Schedule[]
-      }
+  teacher     Teacher   @relation(fields: [teacherId], references: [id])
+  grades      Grade[]
+  schedules   Schedule[]
+}
 
-      // Grades
-      model Grade {
-        id          String    @id @map("_id") @default(auto()) @db.ObjectId
-        studentId   String
-        subjectId   String
-        term        String
-        grade       Float
-        remarks     String?
+// ===========================
+// GRADE MODEL
+// ===========================
+model Grade {
+  id          String    @id @map("_id") @default(auto()) @db.ObjectId
+  studentId   String
+  subjectId   String
+  term        String
+  grade       Float
+  remarks     String?
 
-        student     Student   @relation(fields: [studentId], references: [id])
-        subject     Subject   @relation(fields: [subjectId], references: [id])
-      }
+  student     Student   @relation(fields: [studentId], references: [id])
+  subject     Subject   @relation(fields: [subjectId], references: [id])
+}
 
-      // Schedule
-      model Schedule {
-        id          String    @id @map("_id") @default(auto()) @db.ObjectId
-        subjectId   String
-        teacherId   String
-        dayOfWeek   String
-        startTime   String
-        endTime     String
-        room        String?
+// ===========================
+// SCHEDULE MODEL
+// ===========================
+model Schedule {
+  id          String    @id @map("_id") @default(auto()) @db.ObjectId
+  subjectId   String
+  teacherId   String
+  dayOfWeek   String
+  startTime   String
+  endTime     String
+  room        String?
 
-        subject     Subject   @relation(fields: [subjectId], references: [id])
-        teacher     Teacher   @relation(fields: [teacherId], references: [id])
-      }
+  subject     Subject   @relation(fields: [subjectId], references: [id])
+  teacher     Teacher   @relation(fields: [teacherId], references: [id])
+}
